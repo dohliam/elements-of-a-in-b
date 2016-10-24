@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title>Elements of a in b</title>
+    <link rel="stylesheet" type="text/css" href="https://dohliam.github.io/dropin-minimal-css/vendor/milligram.min.css">
+    <link rel="stylesheet" type="text/css" href="elements.css">
+    <script src="elements.js" type="text/javascript"></script>
+  </head>
+
+  <body onload="window.cola.focus();">
+
+    <center>
+      <h2>Elements of <em>a</em> in <em>b</em></h2>
+      <table>
+        <tr>
+          <th><em>a</em></th>
+          <th><em>b</em></th>
+          <th>result</th>
+        </tr>
+        <tr>
+          <td><textarea type="text" rows="25" cols="25" style="font-size: 16px" value="" id="cola" onkeyup="find_el();"></textarea></td>
+          <td><textarea type="text" rows="25" cols="25" style="font-size: 16px" value="" id="colb" onkeyup="find_el();"></textarea></td>
+          <td><textarea type="text" rows="25" cols="25" style="font-size: 16px" value="" id="result"></textarea></td>
+        </tr>
+      </table><p>
+
+      Regex <em>a</em>: <input type="text" value="(\d\d+)" id="rea" onkeyup="find_el();">
+      <br>
+      Regex <em>b</em>: <input type="text" value="(\d\d+)" id="reb" onkeyup="find_el();">
+      <br>
+
+      <input type="button" onclick="find_el();" value="Find elements from a in b">
+      <br>
+      <p><div id="msg" style="display:none;">&nbsp;</div></p>
+    </center>
+
+  </body>
+</html>
