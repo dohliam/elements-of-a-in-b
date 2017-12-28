@@ -77,3 +77,63 @@ function toggle_options() {
     options.style.display = "";
   }
 }
+
+function dict_lookup() {
+  var cola = document.getElementById("cola");
+  var colb = document.getElementById("colb");
+  var result = document.getElementById("result");
+  var msg = document.getElementById("msg");
+  var listd = document.getElementById("listd").value;
+  var outd = document.getElementById("outd").value;
+
+  var a_lines = cola.value.split("\n");
+  var b_lines = colb.value.split("\n");
+  var a_values = [];
+  var b_matches = [];
+
+  collector = colb.value;
+
+  result.value = "";
+
+  for (i = 0; i < a_lines.length; i++) {
+    l = a_lines[i];
+    re = new RegExp("(.*)" + listd + "(.*)");
+    m = l.match(re);
+
+    if (m == null) {
+      continue;
+    }
+
+    if (outd == "\\t") {
+      outd = "\t";
+    }
+
+    if (m.length == 3) {
+      test1 = m[1];
+      test2 = m[2];
+      result_regex = new RegExp("^" + test1 + "$", "gm");
+
+      collector = collector.replace(result_regex, test1 + outd + test2);
+    }
+  }
+  result.value = collector;
+}
+
+function toggle_mode() {
+  if (window.dictmode.checked) {
+    window.cola.setAttribute("onkeyup", "dict_lookup()");
+    window.colb.setAttribute("onkeyup", "dict_lookup()");
+    window.findbtn.setAttribute("onclick", "dict_lookup()");
+    window.findbtn.value = "Find matching items from list";
+    window.regopts.style.display = "none";
+    window.msg.style.display = "none";
+    window.dictopts.style.display = "";
+  } else {
+    window.cola.setAttribute("onkeyup", "find_el()");
+    window.colb.setAttribute("onkeyup", "find_el()");
+    window.findbtn.setAttribute("onclick", "find_el()");
+    window.dictopts.style.display = "none";
+    window.regopts.style.display = "";
+    window.msg.style.display = "";
+  }
+}

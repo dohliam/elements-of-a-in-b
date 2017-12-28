@@ -13,6 +13,7 @@ Nevertheless, being able to quickly find matching subsets of data without needin
 * [Online demo](https://dohliam.github.io/tiny_tools/elements/) available
 * Group capturing using parentheses
 * Display total number of matches found
+* Dictionary mode (see [below](#dictionary-mode))
 
 ## Usage
 
@@ -108,6 +109,51 @@ Enter `\t(.*)\t` for _Regex a_, and `.*` for _Regex b_.
 The result will be `123`, because only sequences surrounded by tabs were matched in column _a_.
 
 Note: An easier way to approach the above example in particular might be to simply use `\d+` for _Regex a_, which will match all sequences of digits (which in this case happen to only occur in the middle column).
+
+### Dictionary mode
+
+Clicking on the checkbox at the bottom of the page enables the optional _dictionary mode_. This mode is meant to handle a specific common subset of problems involving elements in a list (column _b_) that match keys in a key-value pair database (column _a_). You can think of it like a simple hash table or dictionary lookup.
+
+Key features of dictionary mode:
+
+* All elements in the list remain in order
+* All keys are printed in the result, even if they do not have a matching value
+* Keys and values are returned together in the result
+* The delimiter (default `TAB`) can be changed arbitrarily
+* Duplicate values are retained in the result
+
+In its simplest form, the dictionary in column _a_ is a two-column list of values separated by tab spaces, for example:
+
+    apple	manzana
+    apricot	albaricoque
+    banana	plátano
+    peach	melocotón
+    pear	pera
+    plum	ciruela
+
+If you then enter the following into column _b_:
+
+    pear
+    orange
+    plum
+    apple
+    pear
+    plum
+    kiwi
+
+You would get the following result:
+
+    pear	pera
+    orange
+    plum	ciruela
+    apple	manzana
+    pear	pera
+    plum	ciruela
+    kiwi
+
+(Note the blank values for `orange` and `kiwi`, which were not in the original dictionary list.)
+
+By default, the delimiter for the input (the dictionary data in column _a_) and the output (the result in column _b_) is set to a `TAB` stop (`\t`). To change the delimiter, adjust the values in the **Input delimiter** and **Output delimiter** boxes.
 
 ## See also
 

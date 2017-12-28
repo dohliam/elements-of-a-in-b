@@ -25,12 +25,23 @@
         </tr>
       </table><p>
 
-      Regex <em>a</em>: <input type="text" value="(\d\d+)" id="rea" onkeyup="find_el();">
-      <br>
-      Regex <em>b</em>: <input type="text" value="(\d\d+)" id="reb" onkeyup="find_el();">
+      <input type="checkbox" id="dictmode" value="n" onchange="toggle_mode()"> Dictionary mode
       <br>
 
-      <input type="button" onclick="find_el();" value="Find elements from a in b">
+      <div id="regopts">
+        Regex <em>a</em>: <input type="text" value="(\d\d+)" id="rea" onkeyup="find_el();">
+        <br>
+        Regex <em>b</em>: <input type="text" value="(\d\d+)" id="reb" onkeyup="find_el();">
+        <br>
+      </div>
+
+      <div id="dictopts" style="display:none">
+        Input delimiter: <input type="text" value="\t" id="listd" onkeyup="dict_lookup();">
+        <br>
+        Output delimiter: <input type="text" value="\t" id="outd" onkeyup="dict_lookup();">
+      </div>
+
+      <input type="button" id="findbtn" onclick="find_el();" value="Find elements from a in b">
       <br>
       <p><div id="msg" style="display:none;">&nbsp;</div></p>
     </center>
